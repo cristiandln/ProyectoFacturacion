@@ -47,33 +47,35 @@ public class AccesoPedidos extends Conexion{
 				return uno;
 	}
 	
-	public int altaPedidos (pedidos p1) throws ClassNotFoundException, SQLException {
+	public boolean altaPedidos (String descripcion,	int id_ClienteProveedor,int id_forma_pago,
+	double total,Date fecha,int id_servicio,int id_contrato,double importe_facturado) throws ClassNotFoundException, SQLException {
 		//Variables
 		String sql = "call facturacion.altaPedidos(?,?,?,?,?,?,?,?);";
 		CallableStatement st;
 		int numregistros;
+		pedidos p1 = new pedidos();
         
         //Abrir la conexión
         abrirConexion(); //lo vamos a propagar con throw
         
         //Obtener el comando de la conexion
         st=miConexion.prepareCall(sql);
-        st.setString(1, p1.getDescripcion());
-        st.setInt(2, p1.getId_ClienteProveedor());
-        st.setInt(3, p1.getId_forma_pago());
-        st.setDouble(4, p1.getTotal());
-        st.setDate(5, (Date) p1.getFecha());
-        st.setInt(6,p1.getId_servicio());
-        st.setInt(7, p1.getId_contrato());
-        st.setDouble(8, p1.getImporte_facturado());
+        st.setString(1, descripcion);
+        st.setInt(2, id_ClienteProveedor);
+        st.setInt(3, id_forma_pago);
+        st.setDouble(4, total);
+        st.setDate(5,fecha);
+        st.setInt(6,id_servicio);
+        st.setInt(7,id_contrato);
+        st.setDouble(8,importe_facturado);
         
         numregistros=st.executeUpdate();
         cerrarConexion();
-        return numregistros; 
+        return numregistros>0; 
         
 	}
 	
-	public int bajaPedidos(pedidos p1) throws ClassNotFoundException, SQLException{
+	public boolean bajaPedidos(int id_pedido) throws ClassNotFoundException, SQLException{
         //Declaramos las variables
         String sql = "call facturacion.bajaPedidos(?);";
         CallableStatement st;
@@ -91,12 +93,12 @@ public class AccesoPedidos extends Conexion{
         st=miConexion.prepareCall(sql);
         
         //Asignar valor al parámetro
-        st.setInt(1, p1.getId_pedido());
+        st.setInt(1, id_pedido);
               
         
         numregistros=st.executeUpdate();
          cerrarConexion();
-         return numregistros;    
+         return numregistros>0;    
 }
 
 }
