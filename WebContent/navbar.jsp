@@ -34,13 +34,14 @@
 				role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"> ServiciosProductos </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="crudServiciosProductos.jsp">ServicioProducto</a>
+					<a class="dropdown-item" href="crudServiciosProductos.jsp">Buscar
+						ServicioProducto</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="servletserviciosproductos?op=4">Mostrar
 						todos</a>
 				</div></li>
 				
-			<!-- FIN NAVBAR PEDIDOS -->
+			<!-- FIN NAVBAR SERVICIOS PRODUCTOS -->
 			
 			<!-- NAVBAR CLIENTE PROVEEDORES -->
 			<li class="nav-item dropdown"><a
@@ -54,7 +55,7 @@
 						todos</a>
 				</div></li>
 				
-			<!-- FIN NAVBAR PEDIDOS -->
+			<!-- FIN NAVBAR CLIENTE PROVEEDORES -->
 			
 			<!-- NAVBAR PEDIDOS -->
 			<li class="nav-item dropdown"><a
